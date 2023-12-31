@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 16</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            text-align: right;
+            /* width: 200px; */
+        }
+
+        .grid-item {
+            border: 1px solid black;
+            padding: 20px;
+            text-align: right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Syötä ilmoittautumistiedot</h1>
+
+
+    <div class="grid-container" id="grid">
+        <div class="grid-item"><label for="Nimi">Nimi:</label></div>
+        <div class="grid-item"><input type="text" id="Nimi"></div>
+        <div class="grid-item"><label for="Vuosikurssi">Vuosikurssi:</label></div>
+        <div class="grid-item"><input type="password" id="Vuosikurssi" name="Vuosikurssi"></td></div>
+        <div class="grid-item"><label for="Pppilaitos">Oppilaitos:</label></div>
+        <div class="grid-item"><input type="text" id="Oppilaitos"></div>
+        <div class="grid-item"><label for="Kurssinnimi">Kurssin nimi:</label></div>
+        <div class="grid-item"><input type="text" id="Kurssinnimi"></div>
+        <div class="grid-item"><label for="Kurssin toteutus">Kurssin toteutus:</label></div>
+        <div class="grid-item">
+          <select name="Kurssin toteutus" id="Kurssin toteutus">
+            <option value="Etäopetus">Etäopetus</option>
+            <option value="Avaruusopetus">Avaruusopetus</option>
+            <option value="Valeopetus">Valeopetus</option>
+          </select>
+        </div>
+        
+        <div class="grid-item"><label for="sukupuoli">Sukupuoli:</label></div>
+        <div class="grid-item">
+            <input type="radio" name="sukupuoli" value="Mies">mies
+            <br>
+            <input type="radio" name="sukupuoli" value="Nainen">nainen
+            <br>
+            <input type="radio" name="sukupuoli" value="En kommentoi">en kommentoi
+        </div>
+        <div class="grid-item"><label for="harrastukset">Harrastukset:</label></div>
+        <div class="grid-item">
+            <input type="checkbox" id="hobbies1" name="hobbies[]" value="ATK-pelit">ATK-pelit
+            <br>
+            <input type="checkbox" id="hobbies2" name="hobbies[]" value="Tietokonepelit">Tietokonepelit
+            <br>
+            <input type="checkbox" id="hobbies3" name="hobbies[]" value="PC-pelit" checked>PC-pelit
+            <br>
+            <input type="checkbox" id="hobbies4" name="hobbies[]" value="Videopelit">Videopelit
+        </div>
+        <div class="grid-item"><button>Tyhjennä</button></div>
+        <div class="grid-item"><button>Lähetä</button></div>
+    </div>
+</body>
+
+</html>

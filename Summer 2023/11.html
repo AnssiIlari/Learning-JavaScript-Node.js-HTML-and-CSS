@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tehtävä 15</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .grid-container>div {
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+            border: 1px solid black;
+        }
+
+        /* th,
+        td {
+            border: 1px solid black;
+        } */
+
+        p {
+            font-family: Calibri;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .item1 {
+            grid-column: 1 / span 2;
+            grid-row: 1 / span 2;
+        }
+
+        .item2 {
+            grid-column: 3 / span 3;
+
+        }
+
+        .item6 {
+            grid-row: 3 / span 3;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="grid-container" id="grid">
+        <div class="item1">Henkilöstö
+
+        </div>
+        <div class="item2">
+            <th>Koulutus</th>
+        </div>
+        <div class="item3">
+            <th>Muu</th>
+        </div>
+        <div class="item4">
+            <th>Ammattikorkeakoulu</th>
+        </div>
+        <div class="item5">
+            <th>Korkeakoulu</th>
+        </div>
+        <div class="item6">
+            <th>Ikä</th>
+        </div>
+        <div class="grid-item">
+            <th>-30</th>
+        </div>
+        <div class="grid-item">
+            <td><a href="https://www.google.com/">Google</a></td>
+        </div>
+        <div class="grid-item">
+            <td><a href="https://www.uef.fi/">UEF</a></td>
+        </div>
+        <div class="grid-item">
+            <td><a href="https://www.savonsanomat.fi/">Savon sanomat</a></td>
+        </div>
+        <div class="grid-item">
+            <th>30-50</th>
+        </div>
+        <div class="grid-item">
+            <td>
+                <ol type="1">
+                    <li>Yksi</li>
+                    <li>Kaksi</li>
+                    <li>Kolme</li>
+                </ol>
+            </td>
+        </div>
+        <div class="grid-item">
+            <td>
+                <ol type="1">
+                    <li>Omena</li>
+                    <li>Banaani</li>
+                    <li>Persikka</li>
+                </ol>
+            </td>
+        </div>
+        <div class="grid-item">
+            <td>
+                <ol type="1">
+                    <li>Audi</li>
+                    <li>BMW</li>
+                    <li>Toyota</li>
+                </ol>
+            </td>
+        </div>
+        <div class="grid-item">
+            <th>50-</th>
+        </div>
+        <div class="grid-item">
+            <td style="font-size: 30px;">
+                <p>Javascript</p>
+        </div>
+        <div class="grid-item">
+            <td style="font-size: 30px;">
+                <p>rokkaa</p>
+        </div>
+        <div class="grid-item">
+            <td style="font-size: 30px;">
+                <p>selaimessa</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

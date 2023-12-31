@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        .flex-container {
+            display: flex;
+            background-color: lightgrey;
+            padding: 20px;
+        }
+
+        .TextBox{
+            margin-left: auto;
+        }
+
+        a{
+            
+            /* text-decoration: none; */
+            text-decoration: underline;
+            color: black;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="flex-container">
+        <div class="savonialink">
+            <a href="http://www.savonia.fi">Savonia (linkki)</a>
+        </div>
+        <div>
+            <select name="select" id="select" >
+                <option value="valitse">Valitse</option>
+                <option value="ohjeet">Ohjeet</option>
+                <option value="yhteystiedot">Yhteystiedot</option>
+              </select>
+        </div>
+        <div class="TextBox">
+            <input type="text" placeholder="Search">
+        </div>
+        <div>
+            <input type="submit" value="Search">
+        </div>
+    </div>
+
+</body>
+
+</html>
