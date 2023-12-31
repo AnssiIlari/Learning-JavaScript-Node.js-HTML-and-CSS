@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>teht38-44</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/sunny/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+</head>
+
+<body>
+    <div>
+        <label for="nimi">Nimi:</label>
+        <input type="input" id="nimi">
+    </div>
+    <div>
+        <label for="osoite">Osoite:</label>
+        <input type="input" id="osoite">
+    </div>
+    <div>
+        <label for="asty">Asiakastyyppi:</label>
+        <select id="asty">
+            <option value="0">Valitse</option>
+        </select>
+    </div>
+    <div>
+        <button id="haeNappi">Hae</button>
+    </div>
+
+    <div>
+        <table id="asiakkaat">
+            <thead>
+                <tr>
+                    <th>nimi</th>
+                    <th>osoite</th>
+                    <th>postinumero</th>
+                    <th>postitmp</th>
+                    <th>luontipvm</th>
+                    <th>asty_avain</th>
+                    <th>poista</th>
+                    <th>muuta</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div>
+        <button id="lisaa_asiakas">Lisää asiakas</button>
+    </div>
+
+    <div id="asiakaslisays" title="Lisää asiakas">
+        <form id="lisaa_form">
+            <input type="hidden" id="avain_lisays" name="avain">
+            <label for="nimi_lisays">Nimi:</label>
+            <input type="input" id="nimi_lisays" name="nimi">
+
+            <label for="osoite_lisays">Osoite:</label>
+            <input type="input" id="osoite_lisays" name="osoite">
+
+            <label for="postinro">Postinumero:</label>
+            <input type="input" id="postinro_lisays" name="postinro">
+
+            <label for="postitmp">Postitoimipaikka:</label>
+            <input type="input" id="postitmp_lisays" name="postitmp">
+
+            <label for="asty_avain_lisays">Asiakastyyppi:</label>
+            <input type="input" id="asty_avain_lisays" name="asty_avain">
+
+            <label for="asty_lisays"></label>
+            <select id="asty_lisays" name="asty_avain">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </form>
+    </div>
+    <script>
+
+        function fetch() {
+            $("#haeNappi").click();
+        }
+
+        function lisaaAsiakas() {
+            var lisaaUrl = "https://codez.savonia.fi/jussi/api/asiakas/lisaa.php";
+            var formData = $('#lisaa_form').serialize();
+
+            $.post(lisaaUrl, formData, function (response) {
+                console.log("Customer added:", response);
+                fetch();
+            });
+        }
+
+        $(document).ready(function () {
+
+            $("#asiakaslisays").dialog({
+                autoOpen: false,
+                modal: true,
+                width: 250,
+                buttons: {
+                    "Tallenna": function () {
+                        var avain = $("#avain_lisays").val();
+                        if (avain) {
+                            muutaAsiakas();
+                        } else {
+                            lisaaAsiakas();
+                        }
+                        $(this).dialog("close");
+                    },
+                    "Peruuta": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#lisaa_asiakas").click(function () {
+                $("#asiakaslisays").dialog("open");
+            });
+
+            $(document).on('click', '.muuta', function () {
+                let customerAvain = $(this).data('id');
+
+                var settings = {
+                    "url": "https://codez.savonia.fi/jussi/api/asiakas/haku.php?avain=" + customerAvain,
+                    "method": "POST",
+                    "timeout": 0,
+                };
+
+                $.ajax(settings).done(function (data) {
+                    console.log(data);
+                    $('#nimi_lisays').val(data[0].nimi);
+                    $('#osoite_lisays').val(data[0].osoite);
+                    $('#postinro_lisays').val(data[0].postinro);
+                    $('#postitmp_lisays').val(data[0].postitmp);
+                    $('#asty_lisays').val(data[0].asty_avain);
+                    $('#avain_lisays').val(data[0].avain);
+
+                    $("#asiakaslisays").dialog("open");
+                });
+            });
+
+            $.get("https://codez.savonia.fi/jussi/api/asiakas/tyypit.php", function (types) {
+                types.forEach(function (type) {
+                    $("#asty").append("<option value='" + type.avain + "'>" + type.selite + "</option>");
+                });
+            });
+
+
+            $("#haeNappi").click(function () {
+                var nimi = $("#nimi").val()
+                var osoite = $("#osoite").val()
+                var url = "https://codez.savonia.fi/jussi/api/asiakas/haku.php?";
+                var asty_avain = $("#asty").val();
+
+                if (nimi) {
+                    url += "nimi=" + nimi + "&";
+                }
+
+                if (osoite) {
+                    url += "osoite=" + osoite + "&";
+                }
+
+                if (asty_avain !== "0") {
+                    url += "asty_avain=" + asty_avain + "&";
+                }
+
+                $("#asiakkaat tbody").empty();
+
+                $.get(url, function (data) {
+                    data.forEach(function (asiakas) {
+                        $("#asiakkaat tbody").append(
+                            "<tr>" +
+                            "<td>" + asiakas.nimi + "</td>" +
+                            "<td>" + asiakas.osoite + "</td>" +
+                            "<td>" + asiakas.postinro + "</td>" +
+                            "<td>" + asiakas.postitmp + "</td>" +
+                            "<td>" + asiakas.luontipvm + "</td>" +
+                            "<td>" + asiakas.asty_avain + "</td>" +
+                            "<td><button class='poista' data-id='" + asiakas.avain + "'>Poista</button></td>" +
+                            "<td><button class='muuta' data-id='" + asiakas.avain + "'>Muuta</button></td>" +
+                            "</tr>"
+                        );
+                    });
+                });
+            });
+        });
+
+        function muutaAsiakas() {
+            var avain = $("#avain_lisays").val();
+            var muutaUrl = "https://codez.savonia.fi/jussi/api/asiakas/muuta.php?avain=" + avain;
+            var formData = $('#lisaa_form').serialize();
+
+            $.post(muutaUrl, formData, function (response) {
+                console.log("Customer updated:", response);
+                $("#asiakaslisays").dialog("close");
+                fetch();
+            }).fail(function (error) {
+                console.log("Error updating customer:", error);
+                alert("Failed to update customer. Please try again.");
+            });
+        }
+
+
+        function poista(avain) {
+            var poistaUrl = "https://codez.savonia.fi/jussi/api/asiakas/poista.php?avain=" + avain;
+
+            $.get(poistaUrl, function (response) {
+                console.log("Customer deleted:", response);
+                fetch();
+                console.log("Table updated");
+            });
+        }
+
+        $(document).on("click", ".poista", function () {
+            var avain = $(this).data("id");
+            poista(avain);
+        });
+    </script>
+</body>
+
+</html>
