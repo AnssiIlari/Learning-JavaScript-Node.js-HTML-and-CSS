@@ -3,37 +3,49 @@
 
 <head>
 
-    <title>CSS testi</title>
+<title>Page Title</title>
 
-    <link rel="stylesheet" href="teht4.css">
+<style>
 
-    <style>
-        .uppercase {
-            font-family: uppercase;
-            text-transform: uppercase;
-            font-family: Courier;
-        }
-    </style>
 
+#blue {
+    color: lightblue;
+    cursor:url(smalldog.jpg),auto;
+
+}
+
+
+#lista {
+  list-style-image: url('smallcat.jpg');
+}
+
+#otsikko {
+    white-space: nowrap;
+}
+
+</style>
 </head>
 
 <body>
 
-    <p id="esipuhe">Web-ohjelmoinnin opiskelu alkaa usein HTML:n perusteiden opiskelemisella.
-        Sen jälkeen yleensä opiskellaan tyylimäärittelyjä (CSS) ja Javascript:iä.
-        Nykyään web-maailmassa on paljon erilaisia tekniikoita,
-        joita kaikkia ei voi mitenkään hallita, riittää että osaa yleisesti periaatteet
-        web-ohjelmoinnista. Lisäksi täytyy osata serverin pään ohjelmointia
-        eli back-end:iä.</p>
+    
+<h1 id="otsikko">
+Tässä on pitkä teksti, joka ei mahdu ruudulle yhdelle riville. 
+Toki ilman mitään määrittelyjä teksti on rivitetty jne jne aku ankka huristeli autollaan.
 
-    <p div class="uppercase" id="uppercase">
-        Tämä teksti on muuten oikeasti pienellä kirjoitettu. Seuraava sana,
-        <span style="color:blue;font-weight:bold;font-size: 20px;">css</span>
-        pitäisi olla sinisellä värillä, noiko onnistuu? No, varmasti onnistuu on sen verran
-        nohevia nämä meidän opiskelijat
+</h1>
 
-    </p>
+<ol id="blue" start="4" div class="blue">
+    <li>Karhu</li>
+    <li>Koira</li>
+    <li>Kissa</li>
+</ol>
+
+<ol id="lista">
+    <li>Savonia</li>
+    <li>UEF</li>
+    <li>Sakky</li>
+</ol>
 
 </body>
-
 </html>

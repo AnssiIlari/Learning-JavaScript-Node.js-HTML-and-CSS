@@ -2,76 +2,38 @@
 <html>
 
 <head>
-    <title>Linkkilista</title>
+
+    <title>CSS testi</title>
+
+    <link rel="stylesheet" href="teht4.css">
 
     <style>
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            display: inline;
+        .uppercase {
+            font-family: uppercase;
+            text-transform: uppercase;
+            font-family: Courier;
         }
     </style>
+
 </head>
 
 <body>
 
-    <header>
-        <h4>Mielenkiintoisia linkkejä</h4>
-        <p> Alla kuvattu tärkeimmät linkit joita tarvitset päivittäin </p>
-    </header>
+    <p id="esipuhe">Web-ohjelmoinnin opiskelu alkaa usein HTML:n perusteiden opiskelemisella.
+        Sen jälkeen yleensä opiskellaan tyylimäärittelyjä (CSS) ja Javascript:iä.
+        Nykyään web-maailmassa on paljon erilaisia tekniikoita,
+        joita kaikkia ei voi mitenkään hallita, riittää että osaa yleisesti periaatteet
+        web-ohjelmoinnista. Lisäksi täytyy osata serverin pään ohjelmointia
+        eli back-end:iä.</p>
 
-    <nav>
-        <ul>
-            <li><a href="#TV">[TV]</a></li>
-            <li><a href="#Lehdet">[Lehdet]</a></li>
-            <li><a href="#Verkkokaupat">[Verkkokaupat]</a></li>
-            <li><a href="#Kuopion korkeakoulut">[Kuopion korkeakoulut]</a></li>
-        </ul>
-    </nav>
+    <p div class="uppercase" id="uppercase">
+        Tämä teksti on muuten oikeasti pienellä kirjoitettu. Seuraava sana,
+        <span style="color:blue;font-weight:bold;font-size: 20px;">css</span>
+        pitäisi olla sinisellä värillä, noiko onnistuu? No, varmasti onnistuu on sen verran
+        nohevia nämä meidän opiskelijat
 
-    <section id="TV">
-        <dl>
-            <H1>TV</H1>
-            <dt><a href="https://yle.fi/" target="_blank">YLE</a></dt>
-            <dd>Yleisradion kotisivu.</dd>
-            <dt><a href="https://www.mtvuutiset.fi/" target="_blank">MTV 3</a></dt>
-            <dd>MTV3 etusivu.</dd>
-          </dl>
+    </p>
 
-
-    </section>
-
-    <section id="Lehdet">
-        <dl>
-            <H1>Lehdet</H1>
-            <dt><a href="https://www.iltalehti.fi/" target="_blank">Iltalehti</a></dt>
-            <dd>Iltalehden etusivu.</dd>
-            <dt><a href="https://www.hs.fi/" target="_blank">Helsingin Sanomat</a></dt>
-            <dd>Helsingin Sanomien etusivu.</dd>
-          </dl>
-    </section>
-
-    <article id="Verkkokaupat">
-        <dl>
-            <H1>Verkkokaupat</H1>
-            <dt><a href="https://www.verkkokauppa.com/fi/etusivu" target="_blank">Verkkokauppa</a></dt>
-            <dd>Verkkokauppa.com - todennäköisesti aina halvempi.</dd>
-            <dt><a href="https://www.jimms.fi/" target="_blank">Jimm's PC-store</a></dt>
-            <dd>Sinä hyödyt siitä mitä Jimm's tietää.</dd>
-          </dl>
-    </article>
-
-    <article id="Kuopion korkeakoulut">
-        <dl>
-            <H1>Kuopion korkeakoulut</H1>
-            <dt><a href="https://www.uef.fi/fi/" target="_blank">UEF</a></dt>
-            <dd>Itä-Suomen yliopiston sivusto.</dd>
-            <dt><a href="https://www.savonia.fi/" target="_blank">Savonia</a></dt>
-            <dd>Savonia-ammattikorkeakoulun sivusto.</dd>
-          </dl>
-    </article>
 </body>
 
 </html>

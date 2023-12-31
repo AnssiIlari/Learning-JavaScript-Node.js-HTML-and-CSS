@@ -1,35 +1,89 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Page Title</title>
+    <title>Lomake</title>
+
+    <style>
+        td,
+        th {
+            border: 1px solid black;
+        }
+    </style>
 </head>
+
 <body>
+    <form method="get" action="http://codez.savonia.fi/jussi/api/test.php">
 
-<p>Kappaleet ja rivien vaihdot</p>
-<p>Tämä on kappale.</p>
-<p>
-    Tässä kappaleessa on<br> rivinvaihtoja, jotka on tehty<br> jotenkin.
-</p>
-<p>
-    Tuohon alle pitäisi saada erotteluviiva, miten saanee aikaiseksi
-</p>
+    <table>
+        <tr>
+            <td><label for="nimi">Oppilaitos:</label></td>
+            <td><input type="text" id="oppilaitos" name="laitos" readonly value="Savonia AMK"></td>
+        </tr>
+        <tr>
+            <td><label for="nimi">Nimi:</label></td>
+            <td><input type="text" id="nimi" name="nimi"></td>
+        </tr>
+        <tr>
+            <td><label for="vuosikurssi">Vuosikurssi:</label></td>
+            <td><input type="password" id="vuosikurssi" name="vuosikurssi"></td>
+        </tr>
+        <tr>
+            <td><label for="course">Kurssin nimi:</label></td>
+            <td>
+                <select id="course" name="course[]" multiple>
+                    <optgroup label="Ryhmä 1">
+                        <option value="Ohjelmointi">Matematiikka</option>
+                        <option value="Tietokannat">Fysiikka</option>
+                        <option value="Verkkopalvelut">Kemia</option>
+                    </optgroup>
+                    <optgroup label="Ryhmä 2">
+                        <option value="Ohjelmointi">Tietorakenteet</option>
+                        <option value="Tietokannat">Webohjelmointi</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="tyyppi">Kurssin tyyppi:</label></td>
+            <td>
+                <select id="tyyppi" name="tyyppi">
+                    <option value="Lahiopetus">Lahiopetus</option>
+                    <option value="Valinnainen">Valinnainen</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="sukupuoli">Sukupuoli:</label></td>
+            <td>
+                <input type="radio" name="sukupuoli" value="Mies">Mies
+                <input type="radio" name="sukupuoli" value="Nainen">Nainen
+                <input type="radio" name="sukupuoli" value="Muu">Muu
+            </td>
+        </tr>
+        <tr>
+            <td><label for="hobbies[]">Harrastukset:</label></td>
+            <td>
+                <input type="checkbox" id="hobbies1" name="hobbies[]" value="Pilkkiminen">Pilkkiminen
+                <br>
+                <input type="checkbox" id="hobbies2" name="hobbies[]" value="Purjehdus">Purjehdus
+                <br>
+                <input type="checkbox" id="hobbies3" name="hobbies[]" value="Pyöräily" checked>Pyöräily
+                <br>
+                <input type="checkbox" id="hobbies4" name="hobbies[]" value="Leipominen">Leipominen
+            </td>
+        </tr>
+    </table>
 
-<hr>
+    <input type="submit"></button>
+    <br>
+    <input type="image" src="kalpa.png" alt="Submit" width="50" height="50"></button>
+    <br>
+    <input type="reset"></button>
 
-<p>
-    No, nyt veti vaikeaksi. mitenköhän tuon alla olevan saa
-</p>
-
-<pre>
-    Tässä
-        käytetään
-            ihme-elementtiä
-                ja teksti näkyy
-                    samanlaisena, kuin
-                        se on kirjoitettu editorilla.
-</pre>
+</form>
 
 
 
 </body>
+
 </html>
