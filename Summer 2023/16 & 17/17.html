@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>teht29a</title>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .thumbnail {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div id="vasen">
+            <a href="#" id="link1">Yhteistiedot</a>
+            <a href="#" id="link2">Kartta</a>
+            <a href="#" id="link3">Valokuvat</a>
+        </div>
+        <div id="oikea">
+            <p id="osoite"></p>
+            <p id="kartta"></p>
+            <img src="kuva1.png" id="kuva1" class="thumbnail" hidden >
+            <img src="kuva2.png" id="kuva2" class="thumbnail" hidden>
+        </div>
+    </div>
+
+    <script>
+        let link1 = document.getElementById("link1");
+        let link2 = document.getElementById("link2");
+        let link3 = document.getElementById("link3");
+        let osoiteElement = document.getElementById("osoite");
+        let karttaElement = document.getElementById("kartta");
+        let kuva1Element = document.getElementById("kuva1");
+        let kuva2Element = document.getElementById("kuva2");
+
+        link1.addEventListener("click", function () {
+            osoiteElement.textContent = "Savonia AMK Microkatu 1";
+            karttaElement.textContent = "";
+        });
+
+        link2.addEventListener("click", function () {
+            osoiteElement.textContent = "";
+            karttaElement.textContent = "Savonian campusalueen kartta";
+        });
+        link3.addEventListener("click", function () {
+            osoiteElement.textContent = "";
+            karttaElement.textContent = "";
+            kuva1Element.hidden = false;
+            kuva2Element.hidden = false;
+        });
+        kuva1Element.addEventListener("mouseenter", function () {
+            kuva1Element.src = "kuva2.png";
+            kuva2Element.src = "kuva1.png";
+        });
+
+        kuva1Element.addEventListener("mouseleave", function () {
+            kuva1Element.src = "kuva1.png";
+            kuva2Element.src = "kuva2.png";
+        });
+    </script>
+</body>
+</html>

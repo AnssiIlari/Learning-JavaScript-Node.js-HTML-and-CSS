@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teht 21</title>
+
+    <style>
+        .error {
+            background-color: red;
+        }
+
+        article {
+            display: none;
+        }
+    </style>
+
+    <script src="tehtavat.js"></script>
+
+
+    <script>
+        function buttonClicked() {
+            let pvm = document.getElementById("pvm").value;
+            let tulos = document.getElementById("tulos");
+            let onkoOk = teht21(pvm);
+            tulos.innerText = onkoOk;
+        }
+
+        function teht22(id) {
+
+            let lista = document.getElementById(id);
+            let liElements = lista.getElementsByTagName("li");
+            let values = [];
+
+            for (let i = 0; i < liElements.length; i++) {
+                values.push(liElements[i].textContent);
+            }
+
+            return values
+
+        }
+
+        function buttonClicked1() {
+            let values = teht22("lista");
+            document.getElementById("results").value = values.join(",");
+
+
+        }
+
+
+        function AddForm() {
+
+            let nimi = document.getElementById("etunimi").value;
+            let osoite = document.getElementById("lahiosoite").value;
+            let table = document.getElementById("results_23");
+
+
+            let row = table.insertRow();
+            let cell1 = row.insertCell();
+            let cell2 = row.insertCell();
+
+            cell1.innerText = nimi;
+            cell2.innerText = osoite;
+        }
+
+        function AddForm24() {
+            let nimi = document.getElementById("etunimi").value;
+            let osoite = document.getElementById("lahiosoite").value;
+            let table = document.getElementById("results_23");
+
+            const etunimiTextBox = document.getElementById("etunimi");
+            const lahiosoiteTextBox = document.getElementById("lahiosoite");
+
+            let valid = true;
+            if (nimi.trim() === "") {
+                etunimiTextBox.classList.add("error");
+                valid = false;
+            } else {
+                etunimiTextBox.classList.remove("error");
+            }
+            if (osoite.trim() === "") {
+                lahiosoiteTextBox.classList.add("error");
+                valid = false;
+            } else {
+                lahiosoiteTextBox.classList.remove("error");
+            }
+
+            if (valid) {
+                let row = table.insertRow();
+                let cell1 = row.insertCell();
+                let cell2 = row.insertCell();
+
+                cell1.innerText = nimi;
+                cell2.innerText = osoite;
+            }
+        }
+
+        function showArticle(index) {
+
+
+            let articles = document.getElementsByTagName("article");
+            for (let i = 0; i < articles.length; i++) {
+                articles[i].style.display = "none";
+            }
+
+            let article = document.getElementById("article" + index);
+            article.style.display = "block";
+        }
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <label for="pvm">Syntymäaika (dd.mm.yyyy):</label>
+    <input type="text" id="pvm">
+    <button id="tarkista" onclick="buttonClicked();">Tarkista</button>
+    <p id="tulos"></p>
+
+    <ul id="lista">
+        <li value="Anssi">Anssi</li>
+        <li value="Veikko">Veikko</li>
+        <li value="Kati">Kati</li>
+        <li value="Paavo">Paavo</li>
+        <li value="Janne">Janne</li>
+    </ul>
+
+    <button id="tulosta" onclick="buttonClicked1()">Tulosta</button>
+    <input type="input" id="results">
+    <br>
+    <br>
+    <form id="data">
+        <label for="etunimi">Etunimi:</label>
+        <input type="text" id="etunimi" required>
+        <br>
+        <label for="lahiosoite">Lähiosoite:</label>
+        <input type="text" id="lahiosoite" required>
+        <br>
+
+    </form>
+
+    <button type="button" id="lisaa" onclick="AddForm()">Lisää</button>
+
+    <button type="button" id="lisaa_24" onclick="AddForm24()">Lisää 24</button>
+
+    <table id="results_23">
+
+    </table>
+
+    <a href="#" id="link1" onclick="showArticle(1)">Article 1</a>
+    <a href="#" id="link2" onclick="showArticle(2)">Article 2</a>
+    <a href="#" id="link3" onclick="showArticle(3)">Article 3</a>
+    <a href="#" id="link4" onclick="showArticle(4)">Article 4</a>
+
+    <article id="article1">
+        <h1>Article 1</h1>
+        <p>Ensimmäinen.</p>
+    </article>
+
+    <article id="article2">
+        <h1>Article 2</h1>
+        <p>Toinen.</p>
+    </article>
+
+    <article id="article3">
+        <h1>Article 3</h1>
+        <p>Kolmas.</p>
+    </article>
+
+    <article id="article4">
+        <h1>Article 4</h1>
+        <p>Neljäs.</p>
+    </article>
+
+</body>
+
+</html>
