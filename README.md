@@ -1,6 +1,6 @@
-# Learning JavaScript, Node.js, HTML, and CSS
+# Learning JavaScript, Node.js, React.js, HTML, and CSS
 
-Welcome to my learning journey! This repository contains my progression through JavaScript, Node.js, HTML, and CSS, showcasing everything from my earliest attempts to my latest works.
+Welcome to my learning journey! This repository contains my progression through JavaScript, Node.js, React.js, HTML, and CSS, showcasing everything from my earliest attempts to my latest works.
 
 ## What's Inside
 
