@@ -1,0 +1,1 @@
+# React app which fetces information from API and displays it, using states and useEffect()
