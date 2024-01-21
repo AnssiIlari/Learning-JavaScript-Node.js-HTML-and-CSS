@@ -36,6 +36,8 @@ function App() {
          <AgGridReact
             rowData={todos}
             columnDefs={columnDefs}
+            // suppresses the ability to move columns
+            suppressMovableColumns={true}
          />
       </div>
     </>
