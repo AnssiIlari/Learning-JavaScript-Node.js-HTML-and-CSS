@@ -14,7 +14,7 @@ function App() {
     { field: 'description', sortable: true, filter: true },
     { field: 'date', sortable: true, filter: true },
     { field: 'status', sortable: true, filter: true }
-   ]
+  ]
 
   const inputChanged = (event) => {
     setTodo({ ...todo, [event.target.name]: event.target.value });
@@ -32,13 +32,15 @@ function App() {
       <input placeholder="Status" name="status" value={todo.status} onChange={inputChanged} />
       <button onClick={addTodo}>Add</button>
 
-      <div className="ag-theme-material" style={{height: 400, width: 600,}}>
-         <AgGridReact
-            rowData={todos}
-            columnDefs={columnDefs}
-            // suppresses the ability to move columns
-            suppressMovableColumns={true}
-         />
+      <div className="ag-theme-material" style={{ height: 400, width: 600, }}>
+        <AgGridReact
+          rowData={todos}
+          columnDefs={columnDefs}
+          // suppresses the ability to move columns
+          suppressMovableColumns={true}
+          // Row animations
+          animateRows={true}
+        />
       </div>
     </>
   );
