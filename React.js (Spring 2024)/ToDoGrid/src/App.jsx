@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import ReactiveButton from 'reactive-button';
 
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
@@ -30,7 +31,17 @@ function App() {
       <input placeholder="Description" name="description" value={todo.description} onChange={inputChanged} />
       <input placeholder="Date" name="date" value={todo.date} onChange={inputChanged} />
       <input placeholder="Status" name="status" value={todo.status} onChange={inputChanged} />
-      <button onClick={addTodo}>Add</button>
+      <ReactiveButton
+        color='green'
+        idleText='Add'
+        onClick={addTodo}
+        rounded={true}
+        shadow={true}
+        outline={true}
+      />
+
+      <br />
+      <br />
 
       <div className="ag-theme-material" style={{ height: 400, width: 600, }}>
         <AgGridReact
