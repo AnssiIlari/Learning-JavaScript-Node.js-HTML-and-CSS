@@ -89,11 +89,21 @@ const deleteCustomer = (req, res) => {
     }); 
 }
 
+// DELETE all customers, for testing purposes
+const deleteAllCustomers = () => {
+    db.query('DELETE FROM customers', (err, res) => {
+      if (err) {
+        return console.error('Error executing query', err.stack)
+      }
+    })
+  }
+
 
 module.exports = {
     getAllCustomers: getAllCustomers,
     getCustomerById: getCustomerById,
     createCustomer: createCustomer,
     updateCustomer: updateCustomer,
-    deleteCustomer: deleteCustomer
+    deleteCustomer: deleteCustomer,
+    deleteAllCustomers: deleteAllCustomers,
 }
