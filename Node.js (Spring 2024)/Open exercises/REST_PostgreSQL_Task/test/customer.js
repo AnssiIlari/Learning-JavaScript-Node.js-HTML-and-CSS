@@ -6,6 +6,7 @@ const should = chai.should();
 
 chai.use(chaihttp);
 
+// test customer
 const testCustomer = {
     firstname: 'Test',
     lastname: 'Person',
@@ -13,6 +14,7 @@ const testCustomer = {
     phone: '123456789'
 }
 
+// Test the /POST route
 describe('/POST customers', () => {
     beforeEach((done) => {
         query.deleteAllCustomers();
@@ -28,6 +30,19 @@ describe('/POST customers', () => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
                 res.body.should.have.property('firstname');
+                done();
+            });
+    });
+});
+
+// Test the /GET route
+describe('/GET all customers', () => {
+    it('Get all customers', (done) => {
+        chai.request(app)
+            .get('/customers')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
                 done();
             });
     });
