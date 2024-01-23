@@ -26,3 +26,6 @@ app.delete('/customers/:id', query.deleteCustomer);
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`);
 });
+
+// for testing purposes
+module.exports = app;
