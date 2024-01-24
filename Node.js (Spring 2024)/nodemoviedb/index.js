@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 const port = 3000;
 
-process.env.SECRET_KEY = "5b1a3923cc1e1e19523fd5c3f20b409509d3ff9d42710a4da095a2ce285b009f0c3730cd9b8e1af3eb84d";
+// process.env.SECRET_KEY = "5b1a3923cc1e1e19523fd5c3f20b409509d3ff9d42710a4da095a2ce285b009f0c3730cd9b8e1af3eb84d";
 
 // Get all movies
 app.get("/api/movies", auth.authenticate, query.getAllMovies);
