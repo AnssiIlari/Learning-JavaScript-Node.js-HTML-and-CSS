@@ -5,4 +5,4 @@
 ----
 
 
-# Added test tools and logic
+# Added test tools and logic + login & auth
