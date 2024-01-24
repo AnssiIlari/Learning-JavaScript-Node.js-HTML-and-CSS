@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const query = require('./db/customers');
+const auth = require('./services/authenticate');
 
 const app = express();
 app.use(bodyParser.json());
@@ -8,19 +9,22 @@ app.use(bodyParser.json());
 const port = 3000;
 
 // GET all customers
-app.get('/customers', query.getAllCustomers);
+app.get('/customers',auth.authenticate, query.getAllCustomers);
 
 // GET a single customer by id
-app.get('/customers/:id', query.getCustomerById);
+app.get('/customers/:id',auth.authenticate, query.getCustomerById);
 
 // POST a new customer
-app.post('/customers', query.createCustomer);
+app.post('/customers',auth.authenticate, query.createCustomer);
 
 // PUT (update) a customer
-app.put('/customers/:id', query.updateCustomer);
+app.put('/customers/:id',auth.authenticate, query.updateCustomer);
 
 // DELETE a customer
-app.delete('/customers/:id', query.deleteCustomer);
+app.delete('/customers/:id',auth.authenticate, query.deleteCustomer);
+
+// Route for authentication
+app.post("/login", auth.login);
 
 
 app.listen(port, () => {
