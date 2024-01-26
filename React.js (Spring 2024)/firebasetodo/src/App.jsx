@@ -1,35 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import { AgGridReact } from 'ag-grid-react';
 import './App.css'
 
+import "ag-grid-community/styles/ag-grid.css"; // Core CSS
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
+
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+
+import AddTodo from './AddTodo';
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([]);
+
+  const columnDefs = [
+    { field: 'description', sortable: true, filter: true },
+    { field: 'date', sortable: true, filter: true },
+    { field: 'priority', sortable: true, filter: true },
+  ]
+
+  useEffect(() => {
+    fetchItems();
+  }, [])
+
+
+  // Fetch items from database
+  const fetchItems = () => {
+    fetch('https://todolist-2d959-default-rtdb.europe-west1.firebasedatabase.app/items/.json')
+      .then(response => response.json())
+      .then(data => setTodos(Object.values(data)))
+      .catch(err => console.error(err))
+  }
+
+  const addTodo = (newTodo) => {
+    fetch('https://todolist-2d959-default-rtdb.europe-west1.firebasedatabase.app/items/.json',
+    {
+      method: 'POST',
+      body: JSON.stringify(newTodo)
+    })
+    .then(response => fetchItems())
+    .catch(err => console.error(err))
+  }
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h5">
+            TodoList
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <AddTodo addTodo={addTodo} />
+      <div className="ag-theme-quartz" style={{ height: 200, width: 650 }}>
+        <AgGridReact
+          rowData={todos}
+          columnDefs={columnDefs}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
 export default App
