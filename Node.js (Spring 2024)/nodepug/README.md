@@ -1,1 +1,1 @@
-Simple movie add made with Pug template engine
+Simple movie app made with Pug template engine
