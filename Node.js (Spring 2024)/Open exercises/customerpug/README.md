@@ -1,0 +1,1 @@
+# Customer app made with Pug template engine + Bootstrap
