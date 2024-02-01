@@ -28,4 +28,10 @@ test('add todo',() => {
 
     const table = screen.getByRole('table');
     expect(table).toHaveTextContent('Go to coffee');
+
+    const clearButton = screen.getByText('Clear Todos');
+    fireEvent.click(clearButton);
+
+    // Check that the todo item has been removed
+    expect(table).not.toHaveTextContent('Go to coffee');
   })
